@@ -17,7 +17,7 @@ end
 execute "Extracting and Building Emacs #{node['emacs']['version']} from Source" do
   cwd Chef::Config['file_cache_path']
   command <<-COMMAND
-    tar xfz ${tarball_filename}
+    tar xfz #{tarball_filename}
     cd emacs-#{node['emacs']['version']}
     ./configure --without-x
     make
