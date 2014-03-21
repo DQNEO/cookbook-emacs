@@ -26,3 +26,12 @@ execute "Extracting and Building Emacs #{node['emacs']['version']} from Source" 
   creates "#{node['emacs']['prefix']}/bin/emacs"
   not_if "emacs --version | grep #{node['emacs']['version']}"
 end
+
+execute "install emacs packages" do
+  user "vagrant"
+  group "vagrant"
+  cwd "/home/vagrant"
+  environment "HOME" => '/home/vagrant'
+  command "emacs --batch -l /home/vagrant/.emacs.d/init.el"
+  creates "/home/vagrant/.emacs.d/vendor"
+end
