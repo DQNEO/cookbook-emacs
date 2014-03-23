@@ -27,3 +27,8 @@ execute "Extracting and Building Emacs #{node['emacs']['version']} from Source" 
   creates "#{node['emacs']['prefix']}/bin/emacs"
   not_if "emacs --version | grep #{node['emacs']['version']}"
 end
+
+link "/usr/local/bin/emacs" do
+  to "#{node['emacs']['prefix']}/bin/emacs"
+  not_if "test -e /usr/local/bin/emacs"
+end
