@@ -10,6 +10,7 @@ end
 
 remote_file tarball_filepath do
   source remote_filepath
+  not_if "test -e #{tarball_filepath}"
   mode      0644
 end
 
