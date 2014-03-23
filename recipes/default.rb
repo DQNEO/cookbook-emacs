@@ -20,7 +20,7 @@ execute "Extracting and Building Emacs #{node['emacs']['version']} from Source" 
   command <<-COMMAND
     tar xfz #{tarball_filename}
     cd emacs-#{node['emacs']['version']}
-    ./configure --without-x
+    ./configure --without-x  --prefix=#{node['emacs']['prefix']}
     make
     make install
   COMMAND
