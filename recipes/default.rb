@@ -10,7 +10,7 @@ end
 
 remote_file tarball_filepath do
   source remote_filepath
-  mode      00644
+  mode      0644
 end
 
 # reduce line-noise-eyness
