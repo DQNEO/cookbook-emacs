@@ -4,6 +4,8 @@ tarball_filename = "emacs-#{node['emacs']['version']}.tar.gz"
 tarball_filepath = Chef::Config['file_cache_path'] + '/' + tarball_filename
 remote_filepath = node['emacs']['url'] + tarball_filename
 
+include_recipe "build-essential::default"
+
 package "ncurses-devel" do
   action :install
 end
